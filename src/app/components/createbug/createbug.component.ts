@@ -3,6 +3,7 @@ import {Item} from '../../model/item';
 import {AngularFireDatabase, FirebaseListObservable} from '@angular/fire/database-deprecated';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-createbug',
@@ -13,6 +14,7 @@ export class CreatebugComponent implements OnInit {
   private dbPath = '/hopalaapp';
   items: Observable<any[]> = null;
   private bug: Item = new Item();
+  private bugGemaakt = '';
 
   constructor(private dbF: AngularFirestore) {
     this.items = dbF.collection('bugs').valueChanges();
@@ -23,6 +25,7 @@ export class CreatebugComponent implements OnInit {
 
   public addBug() {
     let bugCollection = this.dbF.collection<Item>('bugs');
-    bugCollection.add({ naam: this.bug.naam, beschrijving: this.bug.beschrijving });
+    bugCollection.add({ naam: this.bug.naam, beschrijving: this.bug.beschrijving, user: firebase.auth().currentUser.email, owner: this.bug.owner });
+    this.bugGemaakt = 'uw bug is gecreëerd'
   }
 }

@@ -1,3 +1,4 @@
+<h1>Log in</h1>
 <form>
   <div class="form-group">
     <label>Email address</label>
@@ -7,5 +8,6 @@
     <label>Password</label>
     <input [(ngModel)]="user.password" name="password" type="password">
   </div>
-  <button type="submit" class="btn btn-default" (click)="doLogin()">Register</button>
+  <button type="submit" class="btn btn-default" (click)="doLogin()">Login</button>
+  <p>{{ingelogd}}</p>
 </form>

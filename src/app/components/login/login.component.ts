@@ -9,6 +9,7 @@ import {User} from '../../model/user';
 })
 export class LoginComponent implements OnInit {
   public user: User = new User();
+  private ingelogd = '';
 
   constructor(public authSer: AuthService) { }
 
@@ -16,5 +17,6 @@ export class LoginComponent implements OnInit {
   }
   doLogin() {
     this.authSer.doLogin(this.user.email, this.user.password);
+    this.ingelogd = 'u bent ingelogd';
   }
 }

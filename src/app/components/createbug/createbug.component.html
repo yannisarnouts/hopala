@@ -1,3 +1,4 @@
+<h1>Maak uw bug</h1>
 <form>
   <div class="form-group">
     <label>Titel</label>
@@ -7,5 +8,10 @@
     <label>Beschrijving</label>
     <input [(ngModel)]="bug.beschrijving" name="bugdesc" type="text">
   </div>
-  <button type="submit" class="btn btn-default" (click)="addBug()">Register</button>
+  <div class="form-group">
+    <label>Eigenaar</label>
+    <input [(ngModel)]="bug.owner" name="bugdesc" type="text">
+  </div>
+  <button type="submit" class="btn btn-default" (click)="addBug()">Verstuur</button>
 </form>
+<p>{{bugGemaakt}}</p>
